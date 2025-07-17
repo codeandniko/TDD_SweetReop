@@ -23,3 +23,6 @@ class SweetShop:
     
     def get_sweet_by_category(self, category: str) -> List[Sweet]:
         return [sweet for sweet in self._sweets.values() if sweet.category == category]  
+    
+    def get_sweet_by_price(self, min_price: float, max_price: float) -> List[Sweet]:
+        return [sweet for sweet in self._sweets.values() if min_price <= sweet.price <= max_price]
