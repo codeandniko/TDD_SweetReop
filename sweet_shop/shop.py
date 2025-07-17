@@ -20,3 +20,6 @@ class SweetShop:
     
     def  get_sweet_by_name(self, name: str) -> List[Sweet]:
         return [sweet for sweet in self._sweets.values() if sweet.name == name]       
+    
+    def get_sweet_by_category(self, category: str) -> List[Sweet]:
+        return [sweet for sweet in self._sweets.values() if sweet.category == category]  

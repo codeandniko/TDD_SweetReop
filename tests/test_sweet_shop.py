@@ -28,3 +28,14 @@ def test_sweet_by_name():
     res= shop.get_sweet_by_name("Kaju Katli")
     assert len(res) == 1
     
+def test_sweet_by_category():
+    shop = SweetShop()
+    sweet1 = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
+    sweet2 = Sweet(id=1002, name="Gulab Jamun", category="Fried", price=30, quantity=15)
+    sweet3 = Sweet(id=1003, name="Rasgulla", category="Fried", price=25, quantity=10)
+    shop.add_sweet(sweet1)
+    shop.add_sweet(sweet2)
+    shop.add_sweet(sweet3)
+    
+    res = shop.get_sweet_by_category("Fried")   
+    assert len(res) == 2 
