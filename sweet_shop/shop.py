@@ -17,3 +17,6 @@ class SweetShop:
     def delete_sweet(self, sweet_id: int):
         if sweet_id in self._sweets:
             del self._sweets[sweet_id]
+    
+    def  get_sweet_by_name(self, name: str) -> List[Sweet]:
+        return [sweet for sweet in self._sweets.values() if sweet.name == name]       
