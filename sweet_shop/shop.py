@@ -6,8 +6,8 @@ class SweetShop:
         self._sweets = {}
         
     def add_sweet(self, sweet: Sweet):
-        self._sweets[sweet.id] = sweet
-    
+        self._sweets[sweet.id] = sweet 
+           
     def get_all_sweets(self) -> List[Sweet]:
         return list(self._sweets.values())
     
@@ -36,4 +36,10 @@ class SweetShop:
                 raise ValueError(f"Not enough quantity for {sweet.name}. Available: {sweet.quantity}, Requested: {want}")
         else:
             raise ValueError(f"Sweet with ID {sweet_id} not found.")
-        
+    
+    def restock_sweet(self, sweet_id: int, add: int):
+        if sweet_id in self._sweets:
+            sweet = self._sweets[sweet_id]
+            sweet.quantity += add
+        else:
+            raise ValueError(f"Sweet with ID {sweet_id} not found.")    

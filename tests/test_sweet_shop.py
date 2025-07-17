@@ -54,11 +54,21 @@ def test_sweet_by_price():
 
 def test_purchase_sweet():
     shop = SweetShop()
-    sweet_to_add = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
-    shop.add_sweet(sweet_to_add)
+    sweet1 = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
+    shop.add_sweet(sweet1)
     
     # Simulate purchasing 5 sweets
-    shop.purchase_sweet(1001, 5)
+    shop.purchase_sweet(1001, 15)
     #verify the quantity is updated
     newsweet = shop.get_sweet_by_id(1001)
-    assert newsweet.quantity == 15    
+    assert newsweet.quantity == 5    
+    
+def test_restock_sweet():
+    shop = SweetShop()
+    sweet1 = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
+    shop.add_sweet(sweet1)
+    
+    shop.restock_sweet(1001, 10)
+    newsweet = shop.get_sweet_by_id(1001)
+    assert newsweet.quantity == 30  # Initial quantity was 20, after restock it should be 30 
+    
