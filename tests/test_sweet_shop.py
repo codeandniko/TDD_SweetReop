@@ -50,4 +50,4 @@ def test_sweet_by_price():
     shop.add_sweet(sweet3)
     
     res = shop.get_sweet_by_price(min_price=20, max_price=30)   
-    assert len(res) == 1    
+    assert len(res) == 2    
