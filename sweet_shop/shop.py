@@ -13,3 +13,7 @@ class SweetShop:
     
     def get_sweet_by_id(self, sweet_id: int) -> Optional[Sweet]:
         return self._sweets.get(sweet_id, None)        
+    
+    def delete_sweet(self, sweet_id: int):
+        if sweet_id in self._sweets:
+            del self._sweets[sweet_id]

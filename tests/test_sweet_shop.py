@@ -8,3 +8,13 @@ def test_add_sweet():
     shop.add_sweet(sweet_to_add)
     assert len(shop.get_all_sweets()) == 1
     assert shop.get_all_sweets()[0].id == 1001
+
+
+def test_delete_sweet():
+    shop = SweetShop()
+    sweet_to_add = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
+    shop.add_sweet(sweet_to_add)
+    
+    shop.delete_sweet(1001)
+    assert len(shop.get_all_sweets()) == 0
+    
