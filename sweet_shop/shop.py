@@ -94,3 +94,13 @@ class SweetShop:
             sweet.quantity += add
         else:
             raise ValueError(f"Sweet with ID {sweet_id} not found.")
+    def update_sweet(self, sweet_id: int, name: str, category: str, price: float, quantity: int):
+        sweet= self.get_sweet_by_id(sweet_id)
+        if sweet:       
+            sweet.name = name
+            sweet.category = category
+            sweet.price = price
+            sweet.quantity = quantity
+        else:
+            raise ValueError(f"Sweet with ID {sweet_id} not found.")
+        return sweet

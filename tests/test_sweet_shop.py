@@ -78,3 +78,18 @@ def test_restock_sweet():
     shop.restock_sweet(1001, 10)
     newsweet = shop.get_sweet_by_id(1001)
     assert newsweet.quantity == 30  # Initial quantity was 20, after restock it should be 30
+
+def test_update_sweet():
+    """Tests if updating a sweet's details works correctly."""
+    shop = SweetShop()
+    sweet1 = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
+    shop.add_sweet(sweet1)
+    
+    # Update the sweet's details
+    updated_sweet = shop.update_sweet(1001, name="Kaju Barfi", category="Dessert", price=55, quantity=25)
+    
+    # Verify the updated details
+    assert updated_sweet.name == "Kaju Barfi"
+    assert updated_sweet.category == "Dessert"
+    assert updated_sweet.price == 55
+    assert updated_sweet.quantity == 25    
