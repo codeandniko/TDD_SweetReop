@@ -51,3 +51,14 @@ def test_sweet_by_price():
     
     res = shop.get_sweet_by_price(min_price=20, max_price=30)   
     assert len(res) == 2    
+
+def test_purchase_sweet():
+    shop = SweetShop()
+    sweet_to_add = Sweet(id=1001, name="Kaju Katli", category="Nut-Based", price=50, quantity=20)
+    shop.add_sweet(sweet_to_add)
+    
+    # Simulate purchasing 5 sweets
+    shop.purchase_sweet(1001, 5)
+    #verify the quantity is updated
+    newsweet = shop.get_sweet_by_id(1001)
+    assert newsweet.quantity == 15    

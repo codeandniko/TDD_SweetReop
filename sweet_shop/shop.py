@@ -26,3 +26,14 @@ class SweetShop:
     
     def get_sweet_by_price(self, min_price: float, max_price: float) -> List[Sweet]:
         return [sweet for sweet in self._sweets.values() if min_price <= sweet.price <= max_price]
+    
+    def purchase_sweet(self, sweet_id: int, want: int):
+        if sweet_id in self._sweets:
+            sweet = self._sweets[sweet_id]
+            if sweet.quantity >= want:
+                sweet.quantity -= want
+            else:
+                raise ValueError(f"Not enough quantity for {sweet.name}. Available: {sweet.quantity}, Requested: {want}")
+        else:
+            raise ValueError(f"Sweet with ID {sweet_id} not found.")
+        
